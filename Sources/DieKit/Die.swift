@@ -23,24 +23,25 @@
 import Foundation
 #endif
 
-#if canImport(CallStackParser)
-import CallStackParser
+#if canImport(SwiftCallStackParser)
+import SwiftCallStackParser
 #endif
 
-public func die<T>(_ msg: String? = nil, lineNumber: Int = #line) -> T {
+public func die<T>(_ msg: String? = nil, trace: Bool = true, file: StaticString = #file, line: UInt = #line) -> T {
     print(error: msg?.appending("\n") ?? "")
 
-#if canImport(CallStackParser)
-//    print(error: Thread.callStackSymbols.dropFirst().enumerated()
-//        .map { line in
-//            CallStackParser.parse(stackSymbol: line.element).map { "\(line.offset)   \($0.classname).\($0.method)" + (line.offset == 0 ? " #\(lineNumber)" : "") } ?? line.element
-//        }
-//        .joined(separator: "\n"))
-#endif
-
-#if canImport(Foundation)
-    exit(EXIT_FAILURE)
-#else
-    fatalError()
-#endif
+    if trace {
+        print(error: "Trace:")
+        print(error: Thread.callStackSymbols
+            .dropFirst()
+            .enumerated()
+            .map { line in
+                line.element
+            }
+            .joined(separator: "\n")
+            .appending("\n")
+        )
+    }
+    
+    fatalError(file: file, line: line)
 }

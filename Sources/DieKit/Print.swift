@@ -19,7 +19,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(macOS)
+#if canImport(Rainbow)
 import Rainbow
 #endif
 
@@ -40,19 +40,24 @@ extension FileHandle: TextOutputStream {
 }
 #endif
 
-public func print(error: String) {
-#if os(macOS)
-    let message = error.red
-#else
-    let message = error
-#endif
+import os.log
 
-#if canImport(Foundation)
-    // todo: oslog?
-    print(message, to: &stderr)
-#else
-    print(message)
-#endif
+public func print(error: String, syslog: Bool = false) {
+    if syslog {
+        os_log("%@", log: .default, type: .error, String(describing: error))
+    } else {
+        #if os(macOS)
+        let message = error.red
+        #else
+        let message = error
+        #endif
+
+        #if canImport(Foundation)
+        print(message, to: &stderr)
+        #else
+        print(message)
+        #endif
+    }
 }
 
 public func print(_ error: LocalizedError) {
@@ -85,7 +90,7 @@ public func print(_ error: NSError) {
         .joined(separator: "\n ")
     print(error: "error: \(message)")
 
-    if let options = error.localizedRecoveryOptions?.map { "– \($0)" }.joined(separator: "\n") {
+    if let options = error.localizedRecoveryOptions?.map({ "– \($0)" }).joined(separator: "\n") {
         print(error: "options: \n\(options)")
     }
 }
@@ -108,26 +113,74 @@ public func print(_ error: URLError) {
 #endif
 
 #if canImport(CoreFoundation)
-import CoreFoundation
-public func print(_ error: CFError) {
-    print(error: "error: \(error)")
-}
+//import CoreFoundation
+//public func print(_ error: CFError) {
+//    print(error: "error: \(error)")
+//}
 
 public func print(_ error: CFSocketError) {
-    print(error: "error: \(error)")
+    print(error: "error: The operation couldn’t be completed. (CFSocketError: \(error.description))")
+}
+
+extension CFSocketError: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .success: return "Success"
+        case .error: return "Error"
+        case .timeout: return "Timeout"
+        default: return "Code \(rawValue)"
+        }
+    }
 }
 #endif
 
 #if canImport(IOKit)
 import IOKit
 public func print(_ error: IOURLError) {
-    print(error: "error: \(error)")
+    print(error: "error: The operation couldn’t be completed. (IOURLError: \(error.description))")
+}
+
+extension IOURLError: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case kIOURLUnknownError: return "Unknown"
+        case kIOURLUnknownSchemeError: return "Unknown Scheme"
+        case kIOURLResourceNotFoundError: return "Resource Not Found"
+        case kIOURLResourceAccessViolationError: return "Resource Access Violation"
+        case kIOURLRemoteHostUnavailableError: return "Remote Host Unavailable"
+        case kIOURLImproperArgumentsError: return "Improper Arguments"
+        case kIOURLUnknownPropertyKeyError: return "Unknown Property Key"
+        case kIOURLPropertyKeyUnavailableError: return "Property Key Unavailable"
+        case kIOURLTimeoutError: return "Timeout"
+        default: return "Code \(rawValue)"
+        }
+    }
 }
 #endif
 
 #if canImport(CoreGraphics)
 import CoreGraphics
 public func print(_ error: CGError) {
-    print(error: "error: \(error)")
+//    print(error: "error: The operation couldn’t be completed. (CGError: \(error.description))")
 }
+
+//extension CGError: CustomStringConvertible {
+//    public var description: String {
+//        switch self {
+//        case .success: return "Success"
+//        case .failure: return "Failure"
+//        case .illegalArgument: return "Illegal Argument"
+//        case .invalidConnection: return "Invalid Connection"
+//        case .invalidContext: return "Invalid Context"
+//        case .cannotComplete: return "Cannot Complete"
+//        case .notImplemented: return "NotImplemented"
+//        case .rangeCheck: return "RangeCheck"
+//        case .typeCheck: return "Type Check"
+//        case .invalidOperation: return "Invalid Operation"
+//        case .noneAvailable: return "None Available"
+//        default: return "Code \(rawValue)"
+//        }
+//    }
+//}
+
 #endif
