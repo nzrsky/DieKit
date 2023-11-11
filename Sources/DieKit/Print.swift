@@ -40,24 +40,24 @@ extension FileHandle: TextOutputStream {
 }
 #endif
 
-import os.log
+// import os.log
+//
+// public func log(error: String) {
+//     os_log("%@", log: .default, type: .error, String(describing: error))
+// }
 
-public func print(error: String, syslog: Bool = false) {
-    if syslog {
-        os_log("%@", log: .default, type: .error, String(describing: error))
-    } else {
-        #if os(macOS)
-        let message = error.red
-        #else
-        let message = error
-        #endif
+public func print(error: String) {
+    #if os(macOS)
+    let message = error.red
+    #else
+    let message = error
+    #endif
 
-        #if canImport(Foundation)
-        print(message, to: &stderr)
-        #else
-        print(message)
-        #endif
-    }
+    #if canImport(Foundation)
+    print(message, to: &stderr)
+    #else
+    print(message)
+    #endif
 }
 
 public func print(_ error: LocalizedError) {
@@ -161,26 +161,26 @@ extension IOURLError: CustomStringConvertible {
 #if canImport(CoreGraphics)
 import CoreGraphics
 public func print(_ error: CGError) {
-//    print(error: "error: The operation couldn’t be completed. (CGError: \(error.description))")
+    print(error: "error: The operation couldn’t be completed. (CGError: \(error.description))")
 }
 
-//extension CGError: CustomStringConvertible {
-//    public var description: String {
-//        switch self {
-//        case .success: return "Success"
-//        case .failure: return "Failure"
-//        case .illegalArgument: return "Illegal Argument"
-//        case .invalidConnection: return "Invalid Connection"
-//        case .invalidContext: return "Invalid Context"
-//        case .cannotComplete: return "Cannot Complete"
-//        case .notImplemented: return "NotImplemented"
-//        case .rangeCheck: return "RangeCheck"
-//        case .typeCheck: return "Type Check"
-//        case .invalidOperation: return "Invalid Operation"
-//        case .noneAvailable: return "None Available"
-//        default: return "Code \(rawValue)"
-//        }
-//    }
-//}
+extension CGError: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .success: return "Success"
+        case .failure: return "Failure"
+        case .illegalArgument: return "Illegal Argument"
+        case .invalidConnection: return "Invalid Connection"
+        case .invalidContext: return "Invalid Context"
+        case .cannotComplete: return "Cannot Complete"
+        case .notImplemented: return "NotImplemented"
+        case .rangeCheck: return "RangeCheck"
+        case .typeCheck: return "Type Check"
+        case .invalidOperation: return "Invalid Operation"
+        case .noneAvailable: return "None Available"
+        default: return "Code \(rawValue)"
+        }
+    }
+}
 
 #endif

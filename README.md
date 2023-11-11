@@ -35,6 +35,12 @@ dependencies: [
 ## Usage
 Here's how simple it is to use DieKit:
 
+Colorfull print to stderr:
+```swift
+print(error: "message")
+```
+
+Optional fatal error 
 ```swift
 import DieKit
 
