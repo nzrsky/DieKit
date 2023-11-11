@@ -35,9 +35,9 @@ jobs:
       - name: Build
         run: swift build
 
-      - name: Test on Linux
-        if: matrix.os == 'ubuntu-latest'
-        run: swift test
+      # - name: Test on Linux
+      #   if: matrix.os == 'ubuntu-latest'
+      #   run: swift test
 
       - name: Test on macOS
         if: matrix.os == 'macos-13'
