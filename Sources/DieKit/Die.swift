@@ -21,14 +21,16 @@
 
 #if canImport(Foundation)
 import Foundation
+#elseif canImport(Glibc)
+import Glibc
 #endif
 
 #if canImport(SwiftCallStackParser)
 import SwiftCallStackParser
 #endif
 
-public func die<T>(_ msg: String? = nil, trace: Bool = true, file: StaticString = #file, line: UInt = #line) -> T {
-    print(error: msg?.appending("\n") ?? "")
+public func die<T>(_ msg: String? = nil, trace: Bool = false, file: StaticString = #file, line: UInt = #line) -> T {
+    print(error: msg ?? "")
 
     if trace {
         print(error: "Trace:")
@@ -43,5 +45,9 @@ public func die<T>(_ msg: String? = nil, trace: Bool = true, file: StaticString 
         )
     }
     
+    #if DEBUG
     fatalError(file: file, line: line)
+    #else
+    abort()
+    #endif
 }
