@@ -47,6 +47,14 @@ jobs:
         if: matrix.os == 'macos-13'
         run: sudo xcode-select -switch /Applications/Xcode.app && /usr/bin/xcodebuild -version
 
+      - name: Print Swift version
+        if: matrix.os == 'macos-13'
+        run: swift --version
+
+      - name: List available toolchains
+        if: matrix.os == 'macos-13'
+        run: xcode-select -p
+
       - name: List Available iOS Simulators
         if: matrix.os == 'macos-13'
         run: xcrun simctl list devices available
