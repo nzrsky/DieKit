@@ -1,6 +1,4 @@
-![DieKit](https://github.com/nzrsky/DieKit/blob/main/Resources/logo.png)
-
-# Error Printer for Swift
+# 💀 Error Printer for Swift
 
 [![CI](https://github.com/nzrsky/DieKit/actions/workflows/build-test.yml/badge.svg)](https://github.com/nzrsky/DieKit/actions/workflows/build-test.yml?query=branch%3Amain+)
 [![codecov](https://codecov.io/gh/nzrsky/DieKit/branch/master/graph/badge.svg)](https://codecov.io/gh/nzrsky/DieKit)
