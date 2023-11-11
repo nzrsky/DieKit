@@ -34,5 +34,5 @@ echo "Version updated to $NEW_VER in $file."
 
 git add README.md
 git commit -m "Release version v$NEW_VER"
-git tag -a "v$NEW_VER" -m "Version $NEW_VER"
-echo "Created new tag: v$NEW_VER"
+git tag -a "$NEW_VER" -m "Version $NEW_VER"
+echo "Created new tag: $NEW_VER"
