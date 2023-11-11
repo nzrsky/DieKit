@@ -157,7 +157,7 @@ extension IOURLError: CustomStringConvertible {
 }
 #endif
 
-#if canImport(CoreGraphics)
+#if canImport(CoreGraphics) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
 import CoreGraphics
 public func print(_ error: CGError) {
     print(error: "error: The operation couldn’t be completed. (CGError: \(error.description))")

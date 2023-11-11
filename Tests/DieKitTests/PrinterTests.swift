@@ -86,7 +86,8 @@ final class PrinterTests: XCTestCase {
 
         XCTAssertEqual(reader.readStderr(), "error: dataCorrupted(Swift.DecodingError.Context(codingPath: [], debugDescription: \"Test Decoding Error\", underlyingError: nil))\n")
     }
-
+    
+#if canImport(CoreFoundation) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
     func testCGErrorPrinting() {
         let reader = StderrReader()
 
@@ -95,6 +96,7 @@ final class PrinterTests: XCTestCase {
 
         XCTAssertEqual(reader.readStderr(), "error: The operation couldn’t be completed. (CGError: Illegal Argument)\n")
     }
+#endif
 }
 
 struct CustomLocalizedError: LocalizedError {

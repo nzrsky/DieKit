@@ -125,7 +125,7 @@ final class CatcherTests: XCTestCase {
     }
 #endif
 
-#if canImport(CoreFoundation)
+#if canImport(CoreFoundation) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && (swift(>=5.9) && os(visionOS))))
     func testPrintOnExceptionWithCFSocketError() {
         let reader = StderrReader()
         XCTAssertThrowsError(try printOnException {
@@ -156,7 +156,7 @@ final class CatcherTests: XCTestCase {
     }
 #endif
 
-#if canImport(CoreGraphics)
+#if canImport(CoreGraphics) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && (swift(>=5.9) && os(visionOS))))
     func testPrintOnExceptionWithCGError() {
         let reader = StderrReader()
         XCTAssertThrowsError(try printOnException {
@@ -167,7 +167,7 @@ final class CatcherTests: XCTestCase {
     }
 #endif
 
-#if canImport(IOKit)
+#if canImport(IOKit) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
     func testPrintOnExceptionWithIOURLError() {
         let reader = StderrReader()
         XCTAssertThrowsError(try printOnException {

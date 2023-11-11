@@ -23,12 +23,12 @@
 import Foundation
 #endif
 
-#if canImport(CoreGraphics)
+#if canImport(CoreFoundation) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
 import CoreGraphics
 extension CGError: Error {}
 #endif
 
-#if canImport(IOKit)
+#if canImport(IOKit) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
 import IOKit
 extension IOURLError: Error {}
 #endif
@@ -52,7 +52,7 @@ public func printOnException<T>(_ body: () throws -> T) throws -> T {
             print(error); throw error
         case let error as CocoaError:
             print(error); throw error
-        #if os(macOS)
+        #if (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
         case let error as MachError:
             print(error); throw error
         #endif
@@ -72,7 +72,7 @@ public func printOnException<T>(_ body: () throws -> T) throws -> T {
         }
         #endif
 
-        #if canImport(CoreGraphics)
+        #if canImport(CoreGraphics) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
         switch error {
         case let error as CGError:
             print(error); throw error
@@ -80,7 +80,7 @@ public func printOnException<T>(_ body: () throws -> T) throws -> T {
         }
         #endif
 
-        #if canImport(IOKit)
+        #if canImport(IOKit) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
         switch error {
         case let error as IOURLError:
             print(error); throw error
