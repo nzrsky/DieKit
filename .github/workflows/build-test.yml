@@ -43,7 +43,12 @@ jobs:
         if: matrix.os == 'macos-13'
         run: swift test --enable-code-coverage
 
+      - name: Select Xcode
+        if: matrix.os == 'macos-13'
+        run: sudo xcode-select -switch /Applications/Xcode.app && /usr/bin/xcodebuild -version
+
       - name: List Available iOS Simulators
+        if: matrix.os == 'macos-13'
         run: xcrun simctl list devices available
 
       # - name: Run tests on iOS Simulator
