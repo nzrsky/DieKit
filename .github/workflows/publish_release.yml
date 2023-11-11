@@ -3,13 +3,18 @@ name: Publish Release
 on:
   push:
     tags:
-      - "v*"
+      - "\\d+\\.\\d+\\.\\d+"
 
 jobs:
   create_release:
     name: Create Release
     runs-on: macos-13
     steps:
+      - name: Setup Swift
+        uses: swift-actions/setup-swift@v1
+        with:
+          swift-version: "5.8"
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
