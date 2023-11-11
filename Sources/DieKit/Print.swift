@@ -99,9 +99,11 @@ public func print(_ error: CocoaError) {
     print(error: "error: \(error)")
 }
 
+#if os(macOS)
 public func print(_ error: MachError) {
     print(error: "error: \(error)")
 }
+#endif
 
 public func print(_ error: POSIXError) {
     print(error: "error: \(error)")

@@ -95,6 +95,7 @@ final class CatcherTests: XCTestCase {
         XCTAssertEqual(reader.readStderr(), "error: CocoaError(_nsError: Error Domain=NSCocoaErrorDomain Code=4866 \"The data couldn’t be written because it isn’t in the correct format.\")\n\n")
     }
 
+#if os(macOS)
     func testPrintOnExceptionWithMachError() {
         let reader = StderrReader()
         XCTAssertThrowsError(try printOnException {
@@ -103,6 +104,7 @@ final class CatcherTests: XCTestCase {
         print(error: "")
         XCTAssertEqual(reader.readStderr(), "error: MachError(_nsError: Error Domain=NSMachErrorDomain Code=1 \"(os/kern) invalid address\")\n\n")
     }
+#endif
 
     func testPrintOnExceptionWithPOSIXError() {
         let reader = StderrReader()

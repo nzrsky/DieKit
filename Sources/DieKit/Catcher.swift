@@ -52,8 +52,10 @@ public func printOnException<T>(_ body: () throws -> T) throws -> T {
             print(error); throw error
         case let error as CocoaError:
             print(error); throw error
+        #if os(macOS)
         case let error as MachError:
             print(error); throw error
+        #endif
         case let error as POSIXError:
             print(error); throw error
         case let error as URLError:
