@@ -95,7 +95,7 @@ final class CatcherTests: XCTestCase {
         XCTAssertEqual(reader.readStderr(), "error: CocoaError(_nsError: Error Domain=NSCocoaErrorDomain Code=4866 \"The data couldn’t be written because it isn’t in the correct format.\")\n\n")
     }
 
-#if os(macOS)
+#if (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && (swift(>=5.9) && os(visionOS))))
     func testPrintOnExceptionWithMachError() {
         let reader = StderrReader()
         XCTAssertThrowsError(try printOnException {

@@ -33,7 +33,7 @@ import IOKit
 extension IOURLError: Error {}
 #endif
 
-#if canImport(CoreFoundation)
+#if canImport(CoreFoundation) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
 import CoreFoundation
 extension CFSocketError: Error {}
 #endif
@@ -64,7 +64,7 @@ public func printOnException<T>(_ body: () throws -> T) throws -> T {
         }
         #endif
 
-        #if canImport(CoreFoundation)
+        #if canImport(CoreFoundation) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
         switch error {
         case let error as CFSocketError:
             print(error); throw error

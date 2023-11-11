@@ -114,11 +114,8 @@ public func print(_ error: URLError) {
 }
 #endif
 
-#if canImport(CoreFoundation)
+#if canImport(CoreFoundation) && (os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || (swift(>=5.9) && os(visionOS)))
 import CoreFoundation
-//public func print(_ error: CFError) {
-//    print(error: "error: \(error)")
-//}
 
 public func print(_ error: CFSocketError) {
     print(error: "error: The operation couldn’t be completed. (CFSocketError: \(error.description))")

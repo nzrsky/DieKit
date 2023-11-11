@@ -48,7 +48,7 @@ jobs:
     - name: Set up Swift
       uses: swift-actions/setup-swift@v1
       with:
-        swift-version: '5.9.0'
+        swift-version: '5.8'
               
     - name: Checkout repository
       uses: actions/checkout@v4
