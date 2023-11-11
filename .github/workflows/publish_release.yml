@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create XCFramework
-        uses: philprime/swift-create-xcframework@main
+        uses: bsneed/swift-create-xcframework@xcode15_fix
         with:
           target: DieKit
 
