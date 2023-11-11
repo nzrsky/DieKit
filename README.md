@@ -12,7 +12,7 @@ DieKit, a Swift package designed to streamline and enhance error handling in you
 ## Key Features
 - Enhanced Error Reporting: It catches, prints, and rethrows errors for comprehensive debugging.
 - Wide Error Support: DieKit extends support to various Swift and Core Foundation error types, providing a versatile tool for a broad range of applications.
-- Works everythere, including Vapor
+- Works everythere, including Vapor 💧
 
 ## Installation
 Add DieKit to your Swift project by including it in your Package.swift dependencies:
@@ -28,6 +28,8 @@ dependencies: [
 Print ANSI color (if supported) errors to stderr:
 ```swift
 print(error: "message")
+// or
+print(error: CustomError())
 ```
 
 Fatal error with proper message as a fallback:
