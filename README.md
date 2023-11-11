@@ -36,14 +36,20 @@ Fatal error with proper message as a fallback:
 ```swift
 import DieKit
 
+// Not really informative sometimes
+let x = env["SECRET_KEY"]!
+// main.swift:28: Fatal error: Unexpectedly found nil while unwrapping an Optional value
+
 // ❌ This code doesn't compile
 let x = env["SECRET_KEY"] ?? fatalError()
 
-// ❌ Also compilation error here
-let x = env["SECRET_KEY"] ?? { fatalError() }
+// 🙈 Compiles but looks ugly
+let x = env["SECRET_KEY"] ?? { fatalError("<Your message>") }()
 
-// ✅ But this is OK
+// ✅ Almost perfect. You also can print stacktrace using `, trace: true`
 let x = env["SECRET_KEY"] ?? die("Specify SECRET_KEY")
+// Specify SECRET_KEY in env
+// main.swift:28: Fatal error
 ```
 
 Print error to stderr and proceed handling:
