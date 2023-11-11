@@ -10,8 +10,7 @@ let package = Package(
         .macOS(.v10_13), .iOS(.v12), .watchOS(.v4), .tvOS(.v12), .visionOS(.v1)
     ],
     products: [
-        .library(name: name, targets: [name]),
-        //.executable(name: "example", targets: ["example"])
+        .library(name: name, targets: [name])
     ],
     dependencies: [
         .package(url: "https://github.com/onevcat/Rainbow", .upToNextMajor(from: "4.0.1"))
@@ -27,13 +26,6 @@ let package = Package(
         .testTarget(
             name: "\(name)Tests",
             dependencies: [.byName(name: name)]
-        ),
-
-//        .target(
-//            name: "example",
-//            dependencies: [
-//                .byName(name: "DieKit")
-//            ]
-//        )
+        )
     ]
 )

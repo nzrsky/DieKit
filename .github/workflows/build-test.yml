@@ -12,8 +12,12 @@ jobs:
   build-test:
     name: Build & Test
     runs-on: macos-latest
-
     steps:
+      - name: Set up Swift
+        uses: actions/setup-swift@v1
+        with:
+          swift-version: '5.9.0'
+      
       - name: Checkout repository
         uses: actions/checkout@v4
         with:

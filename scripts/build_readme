@@ -1,0 +1,19 @@
+#!/bin/bash
+
+current_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to retrieve the current git tag."
+    exit 1
+fi
+
+file="README.md"
+
+sed -E -i '' "s/from: \"[0-9]+\.[0-9]+\.[0-9]+\"/from: \"$current_tag\"/g" "$file"
+
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to update the version in $file."
+    exit 1
+fi
+
+echo "Version updated to $current_tag in $file."
