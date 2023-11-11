@@ -1,21 +1,13 @@
-![DieKit](https://github.com/nzrsky/DieKit/blob/0.1.0/Resources/logo.png)
+![DieKit](https://github.com/nzrsky/DieKit/blob/main/Resources/logo.png)
 
 # Error Printer for Swift
 
-[![Danger Swift](https://github.com/nzrsky/DieKit/actions/workflows/danger.yml/badge.svg)](https://github.com/nzrsky/DieKit/actions/workflows/danger.yml)
-[![Codecov](https://codecov.io/gh/nzrsky/DieKit/branch/main/graph/badge.svg)](https://codecov.io/gh/nzrsky/DieKit)
+[![CI](https://github.com/nzrsky/DieKit/actions/workflows/build-test.yml/badge.svg)](https://github.com/nzrsky/DieKit/actions/workflows/build-test.yml?query=branch%3Amain+)
+[![codecov](https://codecov.io/gh/nzrsky/DieKit/branch/master/graph/badge.svg)](https://codecov.io/gh/nzrsky/DieKit)
 
-<div align="center">
-<!-- 	<a href="https://github.com/nzrsky/DieKit/actions">
-		<img src="https://github.com/nzrsky/DieKit
-    /workflows/Build,%20Lint%20&%20Test/badge.svg" alt="GitHub Actions">
-	</a>
-	<a href="https://nzrsky.github.io/DieKit
-/">
-		<img src="https://raw.githubusercontent.com/nzrsky/DieKit
-    /gh-pages/badge.svg"/>
-	</a> -->
-</div>
+[![Supports macOS, Ubuntu & Windows](https://img.shields.io/badge/platform-macOS%20%7C%20Ubuntu%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20visionOS-lightgray)]()
+[![Swift 5.9](https://img.shields.io/badge/Swift-5.9-F05138?logo=swift&logoColor=white)]()
+[![Latest release](https://img.shields.io/github/v/release/nzrsky/DieKit?sort=semver)]()
 
 DieKit, a Swift package designed to streamline and enhance error handling in your Swift applications. It makes exception handling more robust and insightful.
 
@@ -28,19 +20,13 @@ Add DieKit to your Swift project by including it in your Package.swift dependenc
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/nzrsky/DieKit.git", from: "0.1.1")
+    .package(url: "https://github.com/nzrsky/DieKit.git", from: "0.1.2")
 ]
 ```
 
 ## Usage
 Here's how simple it is to use DieKit:
 
-Colorfull print to stderr:
-```swift
-print(error: "message")
-```
-
-Optional fatal error 
 ```swift
 import DieKit
 

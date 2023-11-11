@@ -113,7 +113,7 @@ public func print(_ error: URLError) {
 #endif
 
 #if canImport(CoreFoundation)
-//import CoreFoundation
+import CoreFoundation
 //public func print(_ error: CFError) {
 //    print(error: "error: \(error)")
 //}

@@ -10,14 +10,18 @@ on:
 
 jobs:
   build-test:
-    name: Build & Test
-    runs-on: macos-latest
+    name: Build & Test with ${{ matrix.swift }} on ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        swift: ["5.9"]
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Set up Swift
-        uses: actions/setup-swift@v1
+      - name: Setup Swift ${{ matrix.swift }}
+        uses: SwiftyLab/setup-swift@latest
         with:
-          swift-version: '5.9.0'
-      
+          swift-version: ${{ matrix.swift }}
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
