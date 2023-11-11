@@ -87,6 +87,19 @@ print(CGError.illegalArgument)
 // error: The operation couldn’t be completed. (CGError: Illegal Argument)
 ```
 
+## Contact
+
+Follow and contact me on [Twitter](http://twitter.com/nzrsky). If you find an issue, 
+just [open a ticket](https://github.com/nzrsky/DieKit/issues/new) on it. Pull 
+requests are warmly welcome as well.
+
+## Backers & Sponsors
+
+Open-source projects cannot live long without your help. If you find Kingfisher is useful, please consider supporting this
+project by becoming a sponsor. Your user icon or company logo shows up on my blog with a link to your home page.
+
+Become a sponsor through [GitHub Sponsors](https://github.com/sponsors/nzrsky). :heart:
+
 ## Contributing
 Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make to DieKit are greatly appreciated.
 
