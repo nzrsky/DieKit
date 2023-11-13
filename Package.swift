@@ -21,8 +21,7 @@ let package = Package(
             exclude: ["Info.plist"],
 			dependencies: [
 				.product(name: "Rainbow", package: "Rainbow", condition: .when(platforms: [.macOS])),
-			],
-            linkerSettings: [.linkedFramework("Rainbow", .when(platforms: [.macOS, .linux]))],
+			]
 		),
         
         .testTarget(
