@@ -19,7 +19,7 @@ Add DieKit to your Swift project by including it in your Package.swift dependenc
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/nzrsky/DieKit.git", from: "0.1.7")
+    .package(url: "https://github.com/nzrsky/DieKit.git", from: "0.1.8")
 ]
 ```
 
