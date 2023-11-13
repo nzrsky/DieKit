@@ -13,13 +13,13 @@ jobs:
       - name: Setup Swift
         uses: swift-actions/setup-swift@v1
         with:
-          swift-version: "5.8"
+          swift-version: "5.7"
 
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Create XCFramework
-        uses: bsneed/swift-create-xcframework@bsneed/xcode15_fix
+        uses: philprime/swift-create-xcframework@main
         with:
           target: DieKit
 
