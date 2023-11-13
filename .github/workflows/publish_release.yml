@@ -10,11 +10,6 @@ jobs:
     name: Create Release
     runs-on: macos-13
     steps:
-      - name: Setup Swift
-        uses: swift-actions/setup-swift@v1
-        with:
-          swift-version: "5.7"
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
