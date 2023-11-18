@@ -7,7 +7,7 @@ let name = "DieKit"
 let package = Package(
     name: name,
     platforms: [
-        .macOS(.v10_15), .iOS(.v13), .watchOS(.v4), .tvOS(.v12), .visionOS(.v1)
+        .macOS(.v10_15), .iOS(.v13), .watchOS(.v4), .tvOS(.v12)
     ],
     products: [
         .library(name: name, targets: [name])
