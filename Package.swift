@@ -7,7 +7,7 @@ let name = "DieKit"
 let package = Package(
     name: name,
 	platforms: [
-        .macOS(.v10_13), .iOS(.v13), .watchOS(.v4), .tvOS(.v12)
+        .macOS(.v10_15), .iOS(.v13), .watchOS(.v4), .tvOS(.v12)
     ],
     products: [
         .library(name: name, targets: [name])
@@ -17,13 +17,13 @@ let package = Package(
 	],
     targets: [
         .target(
-			name: name, 
-            exclude: ["Info.plist"],
-			dependencies: [
-				.product(name: "Rainbow", package: "Rainbow", condition: .when(platforms: [.macOS])),
-			]
-		),
-        
+            name: name,
+            dependencies: [
+                .product(name: "Rainbow", package: "Rainbow", condition: .when(platforms: [.macOS])),
+            ],
+            exclude: ["Info.plist"]
+        ),
+
         .testTarget(
             name: "\(name)Tests",
             dependencies: [.byName(name: name)]
