@@ -1,7 +1,7 @@
 # 💀 Error Printer for Swift
 
 [![CI](https://github.com/nzrsky/DieKit/actions/workflows/build-test.yml/badge.svg)](https://github.com/nzrsky/DieKit/actions/workflows/build-test.yml?query=branch%3Amain+)
-[![codecov](https://codecov.io/gh/nzrsky/DieKit/branch/master/graph/badge.svg)](https://codecov.io/gh/nzrsky/DieKit)
+[![codecov](https://codecov.io/gh/nzrsky/DieKit/graph/badge.svg?token=2goMIh4O6p)](https://codecov.io/gh/nzrsky/DieKit)
 
 [![Supports macOS, Ubuntu & Windows](https://img.shields.io/badge/platform-macOS%20%7C%20Ubuntu%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20visionOS-lightgray)]()
 [![Swift 5.9](https://img.shields.io/badge/Swift-5.9-F05138?logo=swift&logoColor=white)]()
